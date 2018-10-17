@@ -63,18 +63,6 @@ const Twitter = props => {
                 </li>
             </ul>
             <style jsx>{`
-                .nav__twitter {
-                    width: 70%;
-                    height: 46px;
-                    margin: 0 auto;
-                    min-width: 650px;
-                    box-shadow: 5px 10px 20px -20px rgba(85, 172, 238, 1);
-                    border-bottom: 1px solid rgba(238, 238, 238, 1);
-                    border-radius: 5p;
-                    color: rgba(117, 117, 117, 1);
-
-                    display: flex;
-                }
                 .twitter {
                     padding: 0;
                     align-items: center;
@@ -139,7 +127,7 @@ const Twitter = props => {
                 .twitter .nav__search--container .nav__twitter--search {
                     position: absolute;
                     right: 5px;
-                    top: 3px;
+                    top: 4px;
                 }
             `}</style>
         </nav>
