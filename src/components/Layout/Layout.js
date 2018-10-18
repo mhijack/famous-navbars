@@ -38,14 +38,18 @@ const Layout = props => (
         <style global jsx>{`
             nav {
                 width: 70%;
-                height: 46px;
+                height: 55px;
                 margin: 0 auto;
                 min-width: 650px;
-                box-shadow: 5px 10px 20px -20px rgba(85, 172, 238, 1);
-                border-bottom: 1px solid rgba(238, 238, 238, 1);
                 color: rgba(117, 117, 117, 1);
 
                 display: flex;
+            }
+            .nav__wrapper {
+                width: 100%;
+                margin-top: 1rem;
+                box-shadow: 5px 10px 20px -20px rgba(85, 172, 238, 1);
+                border-bottom: 1px solid rgba(238, 238, 238, 1);
             }
         `}</style>
     </div>

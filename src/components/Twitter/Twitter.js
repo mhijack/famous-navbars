@@ -2,67 +2,72 @@ import React from 'react';
 
 const Twitter = props => {
     return (
-        <nav className="nav__twitter">
-            <ul className="twitter" role="navigation">
-                <li>
-                    <img
-                        src={'/static/icons/home.svg'}
-                        alt="home icon"
-                        className="nav__twitter--home"
-                    />
-                    Home
-                </li>
-
-                <li>
-                    <img
-                        src={'/static/icons/notification.svg'}
-                        alt="notification icon"
-                        className="nav__twitter--notification"
-                    />
-                    Notifications
-                </li>
-
-                <li>
-                    <img
-                        src={'/static/icons/message.svg'}
-                        alt="message icon"
-                        className="nav__twitter--messages"
-                    />
-                    Messages
-                </li>
-
-                <li className="nav__twitter--container">
-                    <img
-                        src={'/static/icons/twitter.svg'}
-                        alt="twitter icon"
-                        className="nav__twitter--icon"
-                    />
-                </li>
-
-                <li className="nav__search--container">
-                    <form>
-                        <input placeholder="Search Twitter" />
+        <div className="nav__wrapper">
+            <nav className="nav__twitter">
+                <ul className="twitter" role="navigation">
+                    <li>
                         <img
-                            src={'/static/icons/search.svg'}
-                            alt="search icon"
-                            className="nav__twitter--search"
+                            src={'/static/icons/home.svg'}
+                            alt="home icon"
+                            className="nav__twitter--home"
                         />
-                    </form>
-                </li>
+                        Home
+                    </li>
 
-                <li>
-                    <img
-                        src={'/static/icons/user.svg'}
-                        alt="user icon"
-                        className="nav__twitter--user"
-                    />
-                </li>
+                    <li>
+                        <img
+                            src={'/static/icons/notification.svg'}
+                            alt="notification icon"
+                            className="nav__twitter--notification"
+                        />
+                        Notifications
+                    </li>
 
-                <li className="nav__tweet--container">
-                    <button>Tweet</button>
-                </li>
-            </ul>
+                    <li>
+                        <img
+                            src={'/static/icons/message.svg'}
+                            alt="message icon"
+                            className="nav__twitter--messages"
+                        />
+                        Messages
+                    </li>
+
+                    <li className="nav__twitter--container">
+                        <img
+                            src={'/static/icons/twitter.svg'}
+                            alt="twitter icon"
+                            className="nav__twitter--icon"
+                        />
+                    </li>
+
+                    <li className="nav__search--container">
+                        <form>
+                            <input placeholder="Search Twitter" />
+                            <img
+                                src={'/static/icons/search.svg'}
+                                alt="search icon"
+                                className="nav__twitter--search"
+                            />
+                        </form>
+                    </li>
+
+                    <li>
+                        <img
+                            src={'/static/icons/user.svg'}
+                            alt="user icon"
+                            className="nav__twitter--user"
+                        />
+                    </li>
+
+                    <li className="nav__tweet--container">
+                        <button>Tweet</button>
+                    </li>
+                </ul>
+            </nav>
             <style jsx>{`
+                .nav__wrapper {
+
+                }
                 .twitter {
                     padding: 0;
                     align-items: center;
@@ -91,7 +96,7 @@ const Twitter = props => {
                     font-size: 12px;
                     padding: 4px 8px;
                     border: 0;
-                    background: rgba(85, 172, 238, .8);
+                    background: rgba(85, 172, 238, 0.8);
                     color: #fff;
                     border-radius: 100px;
                     height: 24px;
@@ -130,7 +135,7 @@ const Twitter = props => {
                     top: 4px;
                 }
             `}</style>
-        </nav>
+        </div>
     );
 };
 

@@ -2,64 +2,68 @@ import React from 'react';
 
 const Facebook = props => {
     return (
-        <nav className="nav__facebook">
-            <div className="facebook" role="navigation">
-                <div className="facebook__brand">
-                    <img
-                        src={'/static/icons/facebook.svg'}
-                        alt="facebook icon"
-                        className="nav__facebook--icon"
-                    />
-                </div>
+        <div className="nav__wrapper">
+            <nav className="nav__facebook">
+                <div className="facebook" role="navigation">
+                    <div className="facebook__brand">
+                        <img
+                            src={'/static/icons/facebook.svg'}
+                            alt="facebook icon"
+                            className="nav__facebook--icon"
+                        />
+                    </div>
 
-                <div className="facebook__search">
-                    <form>
-                        <input placeholder="Search" />
-                        <span>
-                            <img
-                                src={'/static/icons/search.svg'}
-                                alt="search icon"
-                                className="nav__facebook--search"
-                            />
-                        </span>
-                    </form>
-                </div>
+                    <div className="facebook__search">
+                        <form>
+                            <input placeholder="Search" />
+                            <span>
+                                <img
+                                    src={'/static/icons/search.svg'}
+                                    alt="search icon"
+                                    className="nav__facebook--search"
+                                />
+                            </span>
+                        </form>
+                    </div>
 
-                <div className="right">
-                    <div className="user">
-                        <div className="jianyuan">
-                            <img
-                                src={'/static/icons/user-circle.svg'}
-                                alt="user icon"
-                                className="nav__facebook--user"
-                            />{' '}
-                            Jianyuan
+                    <div className="right">
+                        <div className="user">
+                            <div className="jianyuan">
+                                <img
+                                    src={'/static/icons/user.svg'}
+                                    alt="user icon"
+                                    className="nav__facebook--user"
+                                />{' '}
+                                Jianyuan
+                            </div>
+                            <div className="home">Home</div>
                         </div>
-                        <div className="home">Home</div>
-                    </div>
 
-                    <div className="info">
-                        <img
-                            className="friends--icon"
-                            src={'/static/icons/friends.svg'}
-                            alt="friends icon"
-                        />
-                        <img
-                            className="messenger--icon"
-                            src={'/static/icons/messenger.svg'}
-                            alt="messenger icon"
-                        />
-                        <img
-                            className="globe--icon"
-                            src={'/static/icons/globe.svg'}
-                            alt="globe icon"
-                        />
+                        <div className="info">
+                            <img
+                                className="friends--icon"
+                                src={'/static/icons/friends.svg'}
+                                alt="friends icon"
+                            />
+                            <img
+                                className="messenger--icon"
+                                src={'/static/icons/messenger.svg'}
+                                alt="messenger icon"
+                            />
+                            <img
+                                className="globe--icon"
+                                src={'/static/icons/globe.svg'}
+                                alt="globe icon"
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </nav>
             <style jsx>{`
-                .facebook {
+                .nav__wrapper {
                     background-color: #4267b2;
+                }
+                .facebook {
                     width: 100%;
                     color: #fff;
                     align-items: center;
@@ -169,7 +173,7 @@ const Facebook = props => {
                     width: 1px;
                 }
             `}</style>
-        </nav>
+        </div>
     );
 };
 
