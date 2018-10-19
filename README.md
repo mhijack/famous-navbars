@@ -1,5 +1,15 @@
 # Popular Navbars re-created with CSS flexbox
 
+Currently the project contains navbars for the following famous sites:
+
+1. Facebook
+2. Twitter
+3. Github
+4. Medium
+
+I will be constantly adding navbars as I see interesting ones! (or upon request).
+
+<hr>
 
 Usage (execute the following commands in the terminal):
 
