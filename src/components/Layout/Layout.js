@@ -12,7 +12,7 @@ const Layout = props => (
         <Link href="/github">
             <a>Github</a>
         </Link>
-        <Link href="/Medium">
+        <Link href="/medium">
             <a>Medium</a>
         </Link>
         {props.children}{' '}
