@@ -6,6 +6,7 @@ Currently the project contains navbars for the following famous sites:
 2. Twitter
 3. Github
 4. Medium
+5. Slack Fund
 
 I will be constantly adding navbars as I see interesting ones! (or upon request).
 
