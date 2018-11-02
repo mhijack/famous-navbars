@@ -5,19 +5,40 @@ import _ from 'lodash';
 class Slack extends Component {
     state = {
         rgbClassName: ['nav__slack', '.up'],
-        whiteClassName: ['nav__slack', 'fixed']
+        whiteClassName: ['nav__slack', 'fixed'],
+        mobileOpen: false
     };
 
     /*  Setup listener for scrolling
     */
     componentDidMount = () => {
         window.addEventListener('scroll', _.throttle(this.handleScroll, 20));
+        window.addEventListener('resize', _.throttle(this.handleResize, 50));
     };
 
     /*  Setup listener for scrolling
     */
     componentWillUnmount = () => {
         window.removeEventListener('scroll', _.throttle(this.handleScroll, 20));
+        window.removeEventListener('resize', _.throttle(this.handleResize, 50));
+    };
+
+    /*  Reset mobileOpen if window too wide
+    */
+    handleResize = () => {
+        if (window.innerWidth > 770) {
+            this.setState({
+                mobileOpen: false
+            });
+            document.querySelector('body').classList.remove('stop-scroll');
+        }
+    };
+
+    /*  set mobileOpen to true
+    */
+    setMobile = () => {
+        document.querySelector('body').classList.add('stop-scroll');
+        this.setState({ mobileOpen: true });
     };
 
     /*  Toggle classes to each nav bar depending on scroll position
@@ -38,6 +59,7 @@ class Slack extends Component {
             whiteClassName = whiteClassName.concat('up');
             rgbClassName = rgbClassName.concat('down');
         }
+
         this.setState({
             whiteClassName,
             rgbClassName
@@ -60,18 +82,22 @@ class Slack extends Component {
                         <h1>Developers</h1>
                         <ul className="slack__list">
                             <li>
-                                <a href="#" className="slack__link">
-                                    Documentation
-                                </a>
+                                <a className="slack__link">Documentation</a>
                             </li>
                             <li>
-                                <a href="#" className="slack__link">
-                                    App Directory
-                                </a>
+                                <a className="slack__link">App Directory</a>
                             </li>
                             <li>
-                                <a href="#" className="slack__link slack__btn">
+                                <a className="slack__link slack__btn">
                                     Get Started
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    className="slack__link menu menu--white"
+                                    onClick={this.setMobile}
+                                >
+                                    Menu
                                 </a>
                             </li>
                         </ul>
@@ -88,25 +114,72 @@ class Slack extends Component {
                         <h1>Developers</h1>
                         <ul className="slack__list">
                             <li>
-                                <a href="#" className="slack__link">
+                                <a className="slack__link">Documentation</a>
+                            </li>
+                            <li>
+                                <a className="slack__link">App Directory</a>
+                            </li>
+                            <li>
+                                <a className="slack__link slack__btn">
+                                    Get Started
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    className="slack__link menu menu--rgb"
+                                    onClick={this.setMobile}
+                                >
+                                    Menu
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <nav
+                        className={[
+                            'slack__mobile',
+                            this.state.mobileOpen ? 'mobile-open' : ''
+                        ].join(' ')}
+                    >
+                        <img
+                            src={'/static/icons/slack/slack_white.png'}
+                            alt="slack white logo"
+                            className="slack__icon slack__mobile--logo"
+                        />
+                        <a
+                            className="slack__mobile--close"
+                            onClick={() => {
+                                this.setState(prevState => ({
+                                    mobileOpen: false
+                                }));
+                                document
+                                    .querySelector('body')
+                                    .classList.remove('stop-scroll');
+                            }}
+                        >
+                            X
+                        </a>
+                        <ul className="slack__list slack__list--mobile">
+                            <li>
+                                <a className="slack__mobile--link">
                                     Documentation
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="slack__link">
+                                <a className="slack__mobile--link">
                                     App Directory
                                 </a>
                             </li>
                             <li>
-                                <a href="#" className="slack__link slack__btn">
+                                <a className="slack__mobile--link">
                                     Get Started
                                 </a>
                             </li>
                         </ul>
                     </nav>
                     <style jsx>{`
-                        nav {
-                            height: 70px !important;
+                        nav.nav__slack {
+                            height: 70px;
+                            min-width: 0;
                         }
                         .nav__wrapper {
                             height: 70px;
@@ -200,17 +273,113 @@ class Slack extends Component {
                             background: white;
                         }
 
+                        .slack__list li:not(:last-child) {
+                            display: inline-block;
+                        }
+                        .menu {
+                            display: none;
+                            border: 2px solid #fff;
+                        }
+                        .fixed .menu--white {
+                            background: white;
+                            color: #48ba87;
+                            border: 2px solid #48ba87;
+                        }
+                        .fixed .slack__link:hover[class$='white'] {
+                            background: white;
+                        }
                         .up {
                             transform: translate3d(0, -80px, 0);
                         }
                         .down {
                             transform: translate3d(0, 0, 0);
                         }
+
+                        .slack__mobile {
+                            min-width: 0;
+                            display: none;
+
+                            background: #492d78;
+                            position: fixed;
+                            top: 0;
+                            left: 0;
+                            height: 100%;
+                            width: 100%;
+                            color: #fff;
+                            font-size: 2.5rem;
+                            font-family: system-ui;
+
+                            opacity: 0;
+                            transform: translate3d(0, -150%, 0);
+
+                            transition: opacity 250ms
+                                    cubic-bezier(0.165, 0.84, 0.44, 1),
+                                transform 1ms cubic-bezier(0.165, 0.84, 0.44, 1);
+                        }
+                        .slack__mobile--logo {
+                            opacity: 0.6;
+                            cursor: pointer;
+
+                            flex: 0;
+                        }
+                        .slack__mobile.mobile-open .slack__mobile--logo {
+                            position: relative;
+                            top: 3px;
+                        }
+
+                        .slack__mobile.mobile-open {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: flex-start;
+                            flex-wrap: wrap;
+                            z-index: 1000;
+
+                            transform: translate3d(0, 0, 0);
+                            opacity: 1;
+                        }
+                        .slack__mobile--close {
+                            font-size: 1.8rem;
+                            cursor: pointer;
+
+                            position: relative;
+                            top: 15px;
+                            right: 25px;
+                            margin-left: auto;
+                            flex: 0;
+                        }
+                        .slack__list--mobile {
+                            display: block;
+
+                            justify-self: flex-start;
+                            align-self: flex-start;
+                            margin: -50px 0 0 25px;
+                            flex: 1 1 770px;
+                        }
+                        .slack__mobile .slack__list--mobile li {
+                            display: block;
+                        }
+
+                        @media only screen and (max-width: 1024px) {
+                            .nav__slack h1 {
+                                display: none;
+                            }
+                        }
+                        @media only screen and (max-width: 770px) {
+                            .menu {
+                                display: block;
+                            }
+                            .slack__list li:not(:last-child) {
+                                display: none;
+                            }
+                        }
                     `}</style>
                     <style jsx global>{`
                         .nav__wrapper {
                             box-shadow: none !important;
                             border-bottom: none !important;
+                        }
+                        body.stop-scroll {
+                            overflow: hidden;
                         }
                     `}</style>
                 </div>
